@@ -23,6 +23,8 @@ urlpatterns = [
     path('api/search/', include('search.urls')),
     path('admin/', admin.site.urls),
 		url(r'^$', generic.TemplateView.as_view(template_name='index.html')),
+		url('sentimentanalytics/', generic.TemplateView.as_view(template_name='sentiment_timeseries.html')),
+		url('countryanalytics/', generic.TemplateView.as_view(template_name='country_timeseries_on.html')),
 		url('usageanalytics/', generic.TemplateView.as_view(template_name='usageanalytics.html')),
 		url('timeanalytics/', generic.TemplateView.as_view(template_name='timeanalytics.html')),
 		url('locanalytics/', generic.TemplateView.as_view(template_name='locanalytics.html')),

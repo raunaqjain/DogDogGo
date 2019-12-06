@@ -25,6 +25,7 @@ import {
 import { Link, Switch, Route, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import ExternalImage from 'react-external-image'
+import Loader from 'react-loader'
 
 class TweetComponent extends React.Component {
 	constructor(props) {
@@ -149,9 +150,7 @@ class TweetComponent extends React.Component {
 	render() {
 		const { loading } = this.state
 		if (loading) {
-			return <div>
-				LOADING
-			</div>
+			return <Loader color="#00acee"/>
 		}
 		return <div>
 			<div className="user-info-card">

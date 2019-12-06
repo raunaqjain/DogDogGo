@@ -13,9 +13,10 @@ class Header extends React.Component {
 						<a className="dropdown-toggle" data-toggle="dropdown" href="#">Analytics
 							<span className="caret"></span></a>
 						<ul className="dropdown-menu">
+							<li><a href='/sentimentanalytics' target="_blank" activeclassname='active'>Sentiment Timeseries Analytics</a></li>
 							<li><a href='/usageanalytics' target="_blank" activeclassname='active'>Usage Analytics</a></li>
-							<li><a href='/timeanalytics' target="_blank" activeclassname='active'>Country Time Series Analytics</a></li>
-							<li><a href='/timeanalytics' target="_blank" activeclassname='active'>Sentiment Time Series Analytics</a></li>
+							<li><a href='/countryanalytics' target="_blank" activeclassname='active'>Country Time Series Analytics</a></li>
+							<li><a href='/timeanalytics' target="_blank" activeclassname='active'>POI Twitter History Analytics</a></li>
 							<li><a href='/locanalytics' target="_blank" activeclassname='active'>Location Analytics</a></li>
 						</ul>
 					</li>

@@ -29,6 +29,7 @@ import Plot from 'react-plotly.js'
 import qs from 'qs'
 import POITweetCard from './poitweetcard'
 import ReplyTweetCard from './replytweetcard'
+import Loader from 'react-loader'
 
 const sentimentEmoticonHash = {
 	'positive': {icon: faSmileBeam, classname: 'sentiment-happy', label: 'Positive'},
@@ -376,7 +377,7 @@ class SearchResults extends React.Component {
 				values: Object.values(analysis.sentiment),
 				labels: Object.keys(analysis.sentiment),
 				type: 'pie',
-				marker: {color: 'red'},
+				marker: {colors: ['#90ee90', 'orange', 'red']},
 			},
 			]}
 			layout={{width: 480, height: 360, title: 'Sentiment Analysis'}}
@@ -411,9 +412,7 @@ class SearchResults extends React.Component {
 		const { match } = this.props
 		let pageCount = parseInt(total / LIMIT) || 1
 		if (loading) {
-			return <div style={{textAlign: 'center'}}>
-				LOADING
-			</div>
+			return <Loader color="#00acee"/>
 		} else {
 			return <div>
 				<div className="row">

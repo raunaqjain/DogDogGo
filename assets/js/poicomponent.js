@@ -26,6 +26,7 @@ import {
 import { Link, Switch, Route, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import ExternalImage from 'react-external-image'
+import Loader from 'react-loader'
 
 //profile page
 //replies
@@ -177,9 +178,7 @@ class POIComponent extends React.Component {
 		const { loading, analysis, articles, tweets } = this.state
 		const { match } = this.props
 		if (loading) {
-			return <div>
-				LOADING
-			</div>
+			return <Loader color="#00acee"/>
 		}
 		return <div>
 			<div className="user-info-card">
