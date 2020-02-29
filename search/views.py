@@ -162,6 +162,7 @@ class SearchQueryView(APIView):
         request = requests.post(constructed_url, headers=headers, json=body)
         response = request.json()
         translated_text = {}
+        print(response)
         translated_text['lang'] = response[0]['detectedLanguage']['language']
         for i in range(4):
             translated_text[response[0]['translations'][i]['to']] = response[0]['translations'][i]['text']
