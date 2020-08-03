@@ -162,7 +162,6 @@ class SearchQueryView(APIView):
         request = requests.post(constructed_url, headers=headers, json=body)
         response = request.json()
         translated_text = {}
-        print(response)
         translated_text['lang'] = response[0]['detectedLanguage']['language']
         for i in range(4):
             translated_text[response[0]['translations'][i]['to']] = response[0]['translations'][i]['text']
@@ -263,15 +262,20 @@ class SearchQueryView(APIView):
         # query = "Liberdade"
 
         # get query translated
-        translated_query = self.translate_query(query)
-        query_en = translated_query['en']
-        query_hi = translated_query['hi']
-        query_pt = translated_query['pt']
-        query_es = translated_query['es']
+        # translated_query = self.translate_query(query)
+        # query_en = translated_query['en']
+        # query_hi = translated_query['hi']
+        # query_pt = translated_query['pt']
+        # query_es = translated_query['es']
+
+        query_en = query
+        query_hi = query
+        query_pt = query
+        query_es = query
 
         # import pdb
         # pdb.set_trace()
-        lang_detected = translated_query['lang']
+        lang_detected = query_language
         if lang_detected == "en":
             query_field = query_field + "text_en%5E2%20text_es%5E1%20text_hi%5E1%20text_pt%5E1"
         elif lang_detected == "hi":
@@ -341,7 +345,7 @@ class FetchRepliesView(APIView):
     def get(self, request):
         core_name = "DDG"
         select_q = "/select?q="
-        localhost = "http://18.191.146.199:8983/solr/" + core_name + select_q
+        localhost = "http://18.222.24.164:8983/solr/" + core_name + select_q
         facet_search = "&facet.field=hashtags&facet.field=lang&facet.field=poi_name&facet.field=poi_country&" \
                        "facet.field=sentiment&facet.field=source&facet.sort=count&facet.limit=10&facet=on&facet.mincount=1"
 
@@ -386,7 +390,7 @@ class FetchUserTweetsView(APIView):
     def get(self, request):
         core_name = "DDG"
         select_q = "/select?q="
-        localhost = "http://18.191.146.199:8983/solr/" + core_name + select_q
+        localhost = "http://18.222.24.164:8983/solr/" + core_name + select_q
         facet_search = "&facet.field=hashtags&facet.field=lang&facet.field=poi_name&facet.field=poi_country&" \
                        "facet.field=sentiment&facet.field=source&facet.sort=count&facet.limit=10&facet=on&facet.mincount=1"
 
@@ -407,7 +411,7 @@ class FetchNewsView(APIView):
     def get(self, request):
         core_name = "NewsArticles"
         select_q = "/select?q="
-        localhost = "http://18.191.146.199:8983/solr/" + core_name + select_q
+        localhost = "http://18.222.24.164:8983/solr/" + core_name + select_q
         query = request.GET.get('id', None)
         inurl = localhost + 'tweet_id:' + query
 
@@ -437,7 +441,7 @@ class FetchUserNewsView(APIView):
     def get(self, request):
         core_name = "NewsArticles"
         select_q = "/select?q="
-        localhost = "http://18.191.146.199:8983/solr/" + core_name + select_q
+        localhost = "http://18.222.24.164:8983/solr/" + core_name + select_q
         query = request.GET.get('poi_name', None)
         inurl = localhost + 'poi_name:' + query
 
